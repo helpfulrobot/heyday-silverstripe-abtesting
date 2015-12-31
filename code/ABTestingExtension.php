@@ -30,7 +30,7 @@ class ABTestingExtension extends DataExtension
         $args = func_get_args();
         $num = count($args);
         if ($num === 0) {
-           throw new RuntimeException('Need at least one argument to ABTestingExtension::getABTesting');
+            throw new RuntimeException('Need at least one argument to ABTestingExtension::getABTesting');
         } elseif ($num === 1) {
             $args = explode('_', $args[0]);
         }

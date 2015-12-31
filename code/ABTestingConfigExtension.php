@@ -18,12 +18,10 @@ class ABTestingConfigExtension extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
-
         $member = Member::currentUser();
 
         // lock down testing for the administrator only
         if ($member->Email == Email::getAdminEmail()) {
-
             $fields->addFieldToTab(
                 'Root.ABTesting',
                 new CheckboxField('ABGlobalTest', 'This site currently undergoing AB testing.')
@@ -32,9 +30,7 @@ class ABTestingConfigExtension extends DataExtension
                 'Root.ABTesting',
                 new TextareaField('ABTestGlobalScript', 'Inline Script for AB Testing (from Google content experiments)')
             );
-
         }
-
     }
 
     /**
@@ -44,21 +40,14 @@ class ABTestingConfigExtension extends DataExtension
      */
     public function getABTestGlobalScript()
     {
-
         if ($this->owner->getField('ABGlobalTest') != 0) {
-
             if (!is_null($this->owner->getField('ABTestGlobalScript'))) {
-
                 $html = new HTMLText();
                 $html->setValue($this->owner->getField('ABTestGlobalScript'));
                 return $html;
-
             }
-
         }
 
         return false;
-
     }
-
 }
